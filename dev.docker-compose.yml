@@ -1,0 +1,101 @@
+services:
+  backend:
+    build: apps/backend
+    restart: always
+    depends_on:
+      - postgres
+    expose:
+      - "3001"
+    ports:
+      - "3001:3001"
+    volumes:
+      - /app/node_modules
+      - backend:/app
+    env_file:
+      - .env
+    networks:
+      - transcendence
+
+  frontend:
+    build:
+      context: apps/frontend
+      dockerfile: Dockerfile.dev
+    restart: always
+    depends_on:
+      - backend
+    expose:
+      - "3000"
+    volumes:
+      - /app/node_modules
+      - frontend:/app
+    environment:
+      API_URL: ${API_URL}
+      NODE_ENV: "development"
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+      WATCHPACK_POLLING: true
+    networks:
+      - transcendence
+
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/pgsql
+    ports:
+      - ${DB_PORT}
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PORT: ${DB_PORT}
+    networks:
+      - transcendence
+
+  caddy:
+    image: caddy:2.10.0-alpine
+    ports:
+      - 8080:443
+    volumes:
+      - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    environment:
+      API_URL: ${API_URL}
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - transcendence
+
+  adminer:
+    image: adminer
+    restart: always
+    environment:
+      ADMINER_DEFAULT_SERVER: "postgres"
+      ADMINER_DESIGN: "nette"
+    networks:
+      - transcendence
+    depends_on:
+      - postgres
+
+volumes:
+  caddy_data:
+  caddy_config:
+  database:
+  frontend:
+    driver: local
+    driver_opts:
+      o: "bind"
+      type: "none"
+      device: "./apps/frontend/"
+
+  backend:
+    driver: local
+    driver_opts:
+      o: "bind"
+      type: "none"
+      device: "./apps/backend/"
+
+networks:
+  transcendence:
+    driver: bridge

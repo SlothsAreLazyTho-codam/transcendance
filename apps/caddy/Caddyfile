@@ -1,0 +1,23 @@
+{$API_URL:localhost} {
+    tls internal
+
+   	@websockets {
+		header Connection *Upgrade*
+		header Upgrade    websocket
+	}
+
+    @multiPaths path /api/* /socket.io/* /ws/* /docs*
+    handle @multiPaths {
+        reverse_proxy backend:3001
+        header Host {http.request.host}
+        header X-Forwarded-Host {http.request.host}
+    }
+    
+    handle /adminer* {
+        reverse_proxy adminer:8080
+    }
+    
+    reverse_proxy /* frontend:3000
+    header Host {http.request.host}
+    header X-Forwarded-Host {http.request.host}
+}

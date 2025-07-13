@@ -1,0 +1,45 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build -d",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "packageManager": "pnpm@10.6.2",
+  "dependencies": {
+    "lightningcss": "^1.29.3",
+    "lightningcss-linux-x64-gnu": "^1.29.3",
+    "@tailwindcss/oxide": "^4.0.14",
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.0.14",
+    "@tailwindcss/oxide-linux-x64-musl": "^4.0.14",
+    "@tailwindcss/postcss": "^4.0.14",
+    "tailwindcss": "^4.0.14",
+    "@heroicons/react": "^2.2.0",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "axios": "^1.9.0",
+    "next": "15.2.0",
+    "phaser": "^3.88.2",
+    "postcss": "^8.5.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "socket.io-client": "^4.8.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "typescript": "^5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "sharp"
+    ]
+  }
+}

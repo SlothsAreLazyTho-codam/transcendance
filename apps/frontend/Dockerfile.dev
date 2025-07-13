@@ -1,0 +1,29 @@
+FROM node:22-alpine
+
+# Set PNPM store location
+ENV PNPM_HOME=/root/.pnpm
+ENV PATH=$PNPM_HOME:$PATH
+
+# Enable corepack
+RUN corepack enable
+
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_TLS_REJECT_UNAUTHORIZED=0
+
+# Start installing NVM & PNPM
+RUN mkdir -p /app
+
+# Change working directory
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml ./
+
+RUN pnpm install
+
+# Copy all other files..
+COPY . .
+
+EXPOSE 3000
+
+# Run
+CMD [ "pnpm", "run", "dev" ]

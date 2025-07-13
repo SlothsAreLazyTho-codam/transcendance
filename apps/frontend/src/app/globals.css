@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@100;300;400;500;600;700;800&display=swap');
+
+@theme {
+  --color-background: #1f1d1d;
+  --color-foreground: #ededed;
+  --color-card: #1d1c1c;
+  --color-primary: #007bff;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --animate-fade-in-scale: fade-in-scale 0.1s ease-out forwards;
+  --animate-gradient: gradientShift 500s ease infinite;
+
+  @keyframes fade-in-scale {
+    0% { 
+      opacity: 0;
+      transform: scale(0.95);
+    },
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background: linear-gradient(to right, rgba(255, 0, 255, 1), rgba(0, 255, 255, 1));
+    background-position: 0% 50%;
+  }
+  50% {
+    background: linear-gradient(to right, rgba(0, 255, 255, 1), rgba(0, 255, 0, 1));
+    background-position: 100% 50%;
+  }
+  100% {
+    background: linear-gradient(to right, rgba(0, 255, 0, 1), rgba(0, 255, 255, 1));
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animation {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+@keyframes neon-border {
+  1% {
+    border-color: fuchsia-300;
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.85), 0 0 2px rgba(255, 0, 255, 0.5);
+  }
+  50% {
+    border-color: lime-300;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.85), 0 0 2px rgba(0, 255, 255, 0.5);
+  }
+  100% {
+    border-color: cyan-300;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.85), 0 0 2px rgba(0, 255, 0, 0.5);
+  }
+}
+ 
+.neon-border {
+  animation: neon-border 100s infinite alternate;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  padding: 1rem;
+  border-radius: 0.375rem;
+}
+
+@keyframes freefall {
+  0% {
+    top: 20%;
+  }
+  100% {
+    transform: rotate(360deg);
+    top: 100vh;
+  }
+}
+
+.square {
+  position: absolute;
+  animation-name: freefall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+
+  animation-name: freefall, neon-border, gradientShift;
+  animation-timing-function: linear, ease-in-out;
+  animation-duration: 10s, 6s;
+  animation-iteration-count: infinite, infinite;
+
+  background-size: 1000% 1000%;
+
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0.375rem;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('./fonts/SmoochSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121212;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Smooch Sans', Arial, Helvetica, sans-serif;
+}
