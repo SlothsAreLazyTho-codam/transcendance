@@ -1,17 +1,11 @@
-# ft_transcendence ⏳
-
-- Play Ping Pong matches.
+# ft_transcendence 🏓
+Play Ping Pong matches in the browser against your friends or enemies!
 
 ## Index
-
 - [Technology Stack](#technology-stack)
-- [Usage](#usage)<!-- [Merise](#merise)--><!-- [Unified Modeling Language](#unified-modeling-language)-->
-- [Supported Features](#supported-features)
-- [Ressources](#ressources)
-
+- [Usage](#usage)
 
 # Technology Stack
-
 | Category               | Technology                                                                                                                                                                                                                                                                                                           |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Server**             | ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)                                                                                                                                                                                                                     |
@@ -30,26 +24,12 @@
 
 tbd
 <!--```bash
-# to see all available commands
-$> make
-
-# build images and run containers
-$> make start
-
-# to build docker images
-$> make build
-
 # to run docker containers
 $> make up
 
+# to run docker containers in development mode
+$> make dev
+
 # removes containers, volumes... and restart everything
 $> make re
-
-# generating some users and matches
-$> make data-generator
-
-```-->
-
-**After running all the containers, you can access <a href='https://localhost' target="_blank">https://localhost</a>**
-
----
+```
