@@ -22,8 +22,7 @@ Play Ping Pong matches in the browser against your friends or enemies!
 
 ## Usage
 
-tbd
-<!--```bash
+```bash
 # to run docker containers
 $> make up
 
