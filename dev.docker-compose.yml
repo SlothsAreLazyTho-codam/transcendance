@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: backend
     build: apps/backend
     restart: always
     depends_on:
@@ -15,6 +16,7 @@ services:
       - transcendence
 
   frontend:
+    container_name: frontend
     build:
       context: apps/frontend
       dockerfile: Dockerfile.dev
@@ -35,6 +37,7 @@ services:
       - transcendence
 
   postgres:
+    container_name: postgres
     image: postgres
     restart: unless-stopped
     volumes:
@@ -50,6 +53,7 @@ services:
       - transcendence
 
   caddy:
+    container_name: caddy
     image: caddy:2.10.0-alpine
     ports:
       - 8080:443
@@ -66,6 +70,7 @@ services:
       - transcendence
 
   adminer:
+    container_name: adminer
     image: adminer
     restart: always
     environment:
