@@ -1,4 +1,6 @@
 game.chinobijman.nl {
+    tls internal
+
     @multiPaths path /api/* /socket.io/* /ws/* /docs*
     handle @multiPaths {
         reverse_proxy http://backend:3001
