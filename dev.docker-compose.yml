@@ -81,19 +81,7 @@ volumes:
   caddy_config:
   database:
   frontend:
-    driver: local
-    driver_opts:
-      o: "bind"
-      type: "none"
-      device: "./apps/frontend/"
-
   backend:
-    driver: local
-    driver_opts:
-      o: "bind"
-      type: "none"
-      device: "./apps/backend/"
-
 networks:
   transcendence:
     driver: bridge
