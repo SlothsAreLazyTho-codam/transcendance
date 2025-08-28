@@ -4,15 +4,15 @@ game.chinobijman.nl {
     @multiPaths path /api/* /socket.io/* /ws/* /docs*
     handle @multiPaths {
         reverse_proxy backend:3001
+        header Host {http.request.host}
+        header X-Forwarded-Host {http.request.host}
     }
-
-    # Adminer
+    
     handle /adminer* {
         reverse_proxy adminer:8080
     }
-
-    # Frontend
-    handle {
-        reverse_proxy frontend:3000
-    }
+    
+    reverse_proxy /* frontend:3000
+    header Host {http.request.host}
+    header X-Forwarded-Host {http.request.host}
 }
