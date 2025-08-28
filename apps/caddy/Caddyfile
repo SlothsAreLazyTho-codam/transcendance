@@ -3,16 +3,16 @@ game.chinobijman.nl {
 
     @multiPaths path /api/* /socket.io/* /ws/* /docs*
     handle @multiPaths {
-        reverse_proxy http://backend:3001
+        reverse_proxy backend:3001
     }
 
     # Adminer
     handle /adminer* {
-        reverse_proxy http://adminer:8080
+        reverse_proxy adminer:8080
     }
 
     # Frontend
     handle {
-        reverse_proxy http://frontend:3000
+        reverse_proxy frontend:3000
     }
 }
