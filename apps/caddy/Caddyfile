@@ -1,4 +1,4 @@
-game.chinobijman.nl:80 {
+game.chinobijman.nl:8080 {
     @multiPaths path /api/* /socket.io/* /ws/* /docs*
     handle @multiPaths {
         reverse_proxy backend:3001
