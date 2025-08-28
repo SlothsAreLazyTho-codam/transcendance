@@ -1,4 +1,4 @@
-game.chinobijman.nl {
+game.chinobijman.nl:80 {
     tls internal
 
     @multiPaths path /api/* /socket.io/* /ws/* /docs*

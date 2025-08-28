@@ -52,7 +52,7 @@ services:
   caddy:
     image: caddy:2.10.0-alpine
     ports:
-      - 8080:443
+      - 8080:80
     volumes:
       - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./certs:/etc/ssl/certs
