@@ -1,6 +1,4 @@
 {$API_URL:localhost} {
-    tls internal
-
    	@websockets {
 		header Connection *Upgrade*
 		header Upgrade    websocket

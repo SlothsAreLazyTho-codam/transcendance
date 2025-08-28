@@ -4,10 +4,8 @@ services:
     restart: always
     depends_on:
       - postgres
-    expose:
-      - "3001"
     ports:
-      - "3001:3001"
+      - "3001"
     volumes:
       - /app/node_modules
       - backend:/app
